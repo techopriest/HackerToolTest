@@ -6,11 +6,10 @@ namespace HACKERTOOL
     {
         public string HackerNickName { get; set; }
         public int ToolNumber { get; set; }
-
-        public HACKER()
+        public HACKER(string Name)
         {
-            HackerNickName = "Techopriest";
             ToolNumber = 0;
+            HackerNickName = Name;
         }
         public void UseTool()
         {
@@ -24,32 +23,12 @@ namespace HACKERTOOL
             }
         }
     }
-    class FileManager
-    {
-        private string UserText;
-
-        public void Manager()
-        {
-            //Console.WriteLine("WE IN TOOL");
-            do
-            {
-                UserText = Console.ReadLine();
-                int position = UserText.IndexOf(":") - 1;
-                if (position < 0)
-                    continue;
-                string command = (UserText.Substring(0, position));
-                string path = UserText.Substring(position + 1);
-                //Console.WriteLine("command : " + command + " path : " + path);
-
-
-            } while (UserText == "exit");
-        }
-    }
     class Program
     {
         static void Main(string[] args)
         {
-            HACKER tool = new HACKER();
+            string Nickname = Console.ReadLine();
+            HACKER tool = new HACKER(Nickname);
             Console.WriteLine( "HACKER USERNAME " + tool.HackerNickName);
             Console.WriteLine("WHAT TOOL YOU WONNA UUUUSE? 1-OmegaFileManager");
             tool.ToolNumber = Convert.ToInt32(Console.ReadLine());
